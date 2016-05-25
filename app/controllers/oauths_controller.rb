@@ -20,16 +20,21 @@ class OauthsController < ApplicationController
             redirect_to photos_path, :notice => "Logged in from #{provider.titleize}!"
           else
             if user_hash[:user_info]["email"]
-              @user = User.create(username: user_hash[:user_info]["name"], email: user_hash[:user_info]["email"], password: "#{user_hash[:user_info]["name"].downcase.delete(' ')}facebook", password_confirmation: "#{user_hash[:user_info]["name"].downcase.delete(' ')}facebook")
+              @user = User.create(username: user_hash[:user_info]["name"],
+                                  email: user_hash[:user_info]["email"],
+                                  password: password_create(user_hash),
+                                  password_confirmation: password_create(user_hash),
+                                  location:
+                                 )
               @user.authentications.create(provider: provider, uid: user_hash[:uid])
               reset_session
               auto_login(@user)
               redirect_to photos_path, :notice => "Logged in from #{provider.titleize}!"
             else
               @user = User.create(username: user_hash[:user_info]["name"],
-                                  email: "#{user_hash[:user_info]["name"].downcase.delete(' ')}@facebook.com",
-                                  password: "#{user_hash[:user_info]["name"].downcase.delete(' ')}facebook",
-                                  password_confirmation: "#{user_hash[:user_info]["name"].downcase.delete(' ')}facebook"
+                                  email: email_create(user_hash),
+                                  password: password_create(user_hash),
+                                  password_confirmation: password_create(user_hash)
                                  )
               @user.authentications.create(provider: provider, uid: user_hash[:uid])
               reset_session
@@ -48,6 +53,14 @@ class OauthsController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider)
+  end
+
+  def email_create(user_hash)
+    "#{user_hash[:user_info]["name"].downcase.delete(' ')}@facebook.com"
+  end
+
+  def password_create(user_hash)
+    "#{user_hash[:user_info]["name"].downcase.delete(' ')}facebook"
   end
 
 end
