@@ -1,0 +1,16 @@
+= simple_form_for @photo, url: photos_path, method: :post, html: { multipart: true } do |f|
+  = f.error_notification
+  = f.input :location, as: :hidden
+
+  .alert.alert-warning.alert-dismissable role="alert"
+    button.close data-dismiss="alert" aria-label="Close"
+    => icon "exclamation"
+    | Uploading too many photos at the same time significantly slows down the upload process. We recommend a maximum of 10 photos each time.
+
+  
+  .form-group
+    = f.label :images
+    = file_field_tag "images[]", type: :file, multiple: true
+
+  .form-actions
+    = f.button :submit, "Upload Photos",  class: "btn-light-blue"

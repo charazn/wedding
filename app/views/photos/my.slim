@@ -1,0 +1,61 @@
+.container
+  .row
+    ul.nav.nav-tabs
+      li
+        = link_to "Hong Kong Photos", hongkong_photos_path
+      li
+        = link_to "Singapore Photos", singapore_photos_path
+      / li
+      /   = link_to "Shanghai Photos", shanghai_photos_path
+      li
+        = link_to "Friends' Uploads", friends_photos_path
+      - unless current_user == @admin
+        li.active
+          = link_to "My Uploads"
+      li.pull-right.slide-show
+        = link_to "Click on any photo to start slide show"
+    
+    br
+    .photos.transitions-enabled
+      - @my_photos.each do |photo|
+        .box.panel.panel-default
+          = link_to photo_path(photo) do
+            = image_tag photo.image.url(:list)
+          .panel-body
+            - if photo.caption
+              .caption = photo.caption
+            - else
+              - if photo.user == current_user && logged_in?
+                = link_to edit_photo_path(photo)
+                  => icon('plus')
+                  | Add a caption
+            div
+              ' by
+              = photo.user.username if photo.user && photo.user.username
+              .pull-right
+                - if photo.get_upvotes.any?
+                  => photo.get_upvotes.size
+                  = icon('heart')
+            - if photo.user == current_user && logged_in? 
+              div
+                = link_to edit_photo_path(photo) do
+                  => icon('pencil')
+                  ' Edit
+                ' |
+                = link_to delete_photo_path(photo), data: { confirm: 'Are you sure?' }, method: :put do
+                  => icon('trash-o')
+                  ' Delete
+
+            - if photo.comments.active.any?
+              br
+              .recent-comments Recent comments
+              div
+                - photo.comments.active.limit(3).each do |comment|
+                  .row
+                    .col-xs-3
+                      = comment.commenter.username
+                    .col-xs-9
+                      = truncate(comment.message, length: 35, separator: ' ')
+              = link_to "Read more comments", photo_path(photo)
+            - else
+              = link_to "Be the first to comment!", photo_path(photo)

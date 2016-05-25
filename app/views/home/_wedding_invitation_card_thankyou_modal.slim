@@ -1,0 +1,8 @@
+.modal.fade.wedding-invitation-card-thankyou-modal role="dialog" aria-labelledby="myLargeModalLabel" tabindex="-1"
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-body style="margin-bottom: 35px;"
+        .alert.alert-success.alert-dismissable role="alert"
+          => icon "info"
+          = flash[:signed_up_for_invitation_card]
+        button.btn.btn-light-blue.pull-right type="button" data-dismiss="modal" Close

@@ -1,0 +1,35 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3.col.xs-12
+      .panel.panel-default
+        .panel-heading
+          h1 Edit Profile
+
+        .panel-body
+          = simple_form_for @user, url: profile_path, method: :patch, html: { multipart: true } do |f|
+            = f.error_notification
+
+            - if @user.image.present?
+              .row
+                .col-md-7
+                  = image_tag @user.image.url(:profile), class: "img-circle"
+                .col-md-5
+                  .form-inputs
+                    = f.input :image, as: :file, label: "Choose another image"
+              br
+
+            - else
+              .form-inputs
+                = f.input :image, as: :file
+
+            .form-inputs
+              = f.input :email
+              / = f.input :mobile
+              = f.input :username
+              = f.input :password, placeholder: "Minimum 6 characters", hint: "Leave this blank if you do not wish to change it."
+
+            .form-actions
+              = f.button :submit, "Update Profile", class: "btn-light-blue"
+
+        .panel-footer
+          = link_to 'Back to all photos', photos_path

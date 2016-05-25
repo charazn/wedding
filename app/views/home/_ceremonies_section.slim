@@ -1,0 +1,97 @@
+.container
+  h2.hongkong-recap Highlights of Our Wedding Ceremony in Hong Kong, 20th March 2016
+  .row.hongkong-recap-photos
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/rawlinson_house_200.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img2.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img3.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img4.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img5.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img6.jpg", class: "img-responsive img-thumbnail")
+  br
+  .row.hongkong-recap-photos
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img7.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img1.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img8.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/hkfc-restaurant_200.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img9.jpg", class: "img-responsive img-thumbnail")
+    .col-md-2.col-xs-12
+      = link_to photos_path do 
+        = image_tag("hongkong_recap/img10.jpg", class: "img-responsive img-thumbnail")
+  br
+  .row.hongkong-recap-text
+    .col-md-10.col-md-offset-1.col-xs-12
+      p Our marriage registration was held at historic Rawlinson House, Central Park, Hong Kong Island. It was a most lovely morning of Spring Equinox 春分. The civil ceremony was simple but warm with friends witnessing our union. We adjourned to Hong Kong Football Club for lunch. Thank you all our friends and relatives present on the day. We are delighted with having you being with us on the day.
+      p 
+        ' To view and comment on the photos, please 
+        => link_to "login", login_path 
+        ' or 
+        = link_to "signup", new_user_path
+        | . You would also be able to upload photos you have taken onto the site. 
+
+  hr
+
+  .row
+    .col-md-6.col-xs-12.singapore-text
+      .pull-right.text-right
+        h2
+          | The Ceremony in Singapore
+        p.singapore-date-text 18 June 2016
+        .row
+          .col-md-8.col-md-offset-4.col-xs-12
+            h3.text-left
+              | 11:00 am Tea Ceremony
+              br
+              | 12:00 pm Lunch
+        br
+        .row
+          .col-md-8.col-md-offset-4.col-xs-12
+            h4.text-left
+              | Dress: Smart
+              br
+              .singapore-contact-details
+                | Contact: 9791 5720 Coen          
+        br
+        .singapore-restaurant-name-text
+          | Hong Ren Tang Imperial Restaurant 宏仁堂御膳廳
+        .singapore-restaurant-address-text
+        | Second Floor, Riverview Hotel, 382 Havelock Road, Singapore 169629
+        br
+        a href="#" data-toggle="modal" data-target=".singapore-lunch-map-modal"
+          | (Click Map for directions)
+          
+    .col-md-6.col-xs-12.singapore-image
+      = image_tag("hong_ren_tang_imperial_restaurant_480x360.jpg")
+
+  hr
+    .row
+      .col-md-6.col-xs-12.shanghai-image.scrolloff
+        iframe width="480" height="360" frameborder="0" style="border:0" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJz64SsH70sjURNgy4SbsWRdQ&key=#{ENV['GOOGLE_MAPS_EMBED_API_KEY']}&zoom=15"
+      .col-md-6.col-xs-12.shanghai-text
+        h2 The Ceremony in Shanghai
+        p.shanghai-date-text 15 October 2016
+        p
+          | (Details to be announced)
+
+  hr

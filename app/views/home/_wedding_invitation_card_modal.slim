@@ -1,0 +1,13 @@
+.modal.fade.wedding-invitation-card-modal role="dialog" aria-labelledby="myLargeModalLabel" tabindex="-1"
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-body
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        .row
+          .col-xs-8
+            = image_tag("wedding_invitation_card_sg.jpg", class: "img-responsive")
+          .col-xs-4
+            p Receive our lovely wedding invitation card in your email!
+            br
+            = render 'home/wedding_invitation_card_signup_form'

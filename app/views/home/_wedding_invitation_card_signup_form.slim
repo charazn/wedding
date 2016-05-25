@@ -1,0 +1,8 @@
+= simple_form_for(@user, url: invitation_card_url, method: :post) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+
+  .form-actions
+    = f.button :submit, "Receive card", class: "btn-light-blue"

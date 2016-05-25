@@ -1,0 +1,32 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3.col.xs-12
+      .panel.panel-default
+        .panel-heading
+          h1 Edit Photo
+
+        .panel-body
+          = simple_form_for @photo, url: photo_path, method: :patch, html: { multipart: true } do |f|
+            = f.error_notification
+
+            - if @photo.image.present?
+              .row
+                .col-md-7
+                  = image_tag @photo.image.url(:list)
+                .col-md-5
+                  .form-inputs
+                    = f.input :image, as: :file, label: "Choose another image"
+              br
+
+            - else
+              .form-inputs
+                = f.input :image, as: :file
+
+            .form-inputs
+              = f.input :caption
+
+            .form-actions
+              = f.button :submit, f.object.new_record? ? "Upload Photo" : "Update Photo", class: "btn-light-blue"
+
+        .panel-footer
+          = link_to 'Back', photo_path(@photo)

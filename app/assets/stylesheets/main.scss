@@ -1,0 +1,321 @@
+$light-blue: #b8d5d7;
+$dark-red: #cc0000;
+
+.btn-light-blue {
+  @include button-variant(white, $light-blue, $light-blue);
+}
+
+.scrolloff iframe {
+  pointer-events: none;
+}
+
+body, label, input {
+  font-family: Helvetica;
+  font-weight: 200;
+  font-size: 14px;
+  h1, h2, h3, h4, h5, h6, p, a {
+    font-weight: 200;
+  }
+}
+
+.home_index {
+  .navbar-default {
+    background: transparent;
+    border: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: 100px;
+    .navbar-header {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      a {
+        outline: none;
+        line-height: inherit;
+      }
+    }
+    .navbar-brand {
+      float: none;
+      color: white;
+      font-family: 'Tangerine', cursive;
+      font-size: 72px;
+      font-weight: 900;
+    }
+    .navbar-collapse {
+      .navbar-nav {
+        .profile_image {
+          padding-top: 10px;
+        }
+        li.invitation-card {
+          margin-right: 20px;
+        }
+        a {
+          background: rgba(0, 0, 0, 0.1);
+          color: white;
+          outline: none;
+        }
+        a:hover {
+          background-color: $light-blue;
+        }
+        ul.dropdown-menu {
+          background: transparent;
+          color: white;
+          border: 1px solid white;
+          outline: none;
+          li {
+            a {
+              background: transparent;
+            }
+            a:hover {
+              background-color: $light-blue;
+            }
+          }
+          li.divider {
+            margin: 5px 0;
+          }
+        }
+      }
+    }
+  } // .navbar-default
+
+  .landing-carousel {
+    padding: 0;
+    .carousel {
+      .carousel-indicators {
+        padding-bottom: 25px;
+      }
+      .carousel-inner {
+        .item {
+          img {
+            min-width: 100%;
+          }
+          .carousel-caption {
+            padding-bottom: 60px;
+          }
+        }
+      }
+    }
+  }
+
+  .hongkong-recap {
+    margin-bottom: 30px;
+    .hongkong-recap-photos {
+      .col-md-2 {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+  .hongkong-recap-text {
+    p {
+      font-size: 1.75rem;
+    }
+  }
+
+  .singapore-text {
+    .singapore-date-text {
+      font-size: 40px;
+    }
+    .singapore-restaurant-name-text {
+      font-size: 1.75rem;
+      font-weight: 400;
+    }
+    .singapore-restaurant-address-text {
+      font-size: 1.5rem;
+    }
+    .singapore-contact-details {
+      margin-top: 5px;
+    }
+  }
+
+  .singapore-image {
+    img {
+      width: 100%;
+    }
+  }
+
+  .shanghai-image {
+    text-align: right;
+    img {
+      width: 100%;
+    }
+  }
+
+  .shanghai-text {
+    h2 {
+      margin-top: 100px;
+    }
+    .shanghai-date-text {
+      font-size: 40px;
+    }
+  } // .landing-carousel
+
+  .photo-section {
+    .col-md-4 {
+      img {
+        border-radius: 50%;
+      }
+      h2 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .wedding-invitation-card-modal {
+    p {
+      font-size: 22px;
+    }
+  } // .wedding-invitation-card-modal
+} // .home-index
+
+.users_new, .user_sessions_new, .users_edit, .users_show, .users_create, .home_thank_you,
+.photos_index, .photos_show, .photos_new, .photos_edit, .profiles_edit, .comments_edit,
+.password_resets_new, .password_resets_edit, .photos_hongkong, .photos_singapore, .photos_shanghai, .photos_friends, .photos_my {
+  .navbar-default {
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100px;
+    .navbar-header {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      a {
+        outline: none;
+        line-height: inherit;
+      }
+    }
+    .navbar-brand {
+      float: none;
+      color: black;
+      font-family: 'Tangerine', cursive;
+      font-size: 72px;
+      font-weight: 900;
+    }
+    .navbar-collapse {
+      .navbar-nav {
+        .profile_image {
+          padding-top: 10px;
+        }
+        a {
+          color: black;
+          outline: none;
+        }
+        a:hover {
+          color: white;
+          background-color: $light-blue;
+        }
+      }
+    }
+  } // .navbar-default
+
+  label {
+    font-weight: 400;
+  }
+
+  .panel-heading {
+    background-color: $light-blue;
+    h1 {
+      margin-top: 10px;
+    }
+  }
+  .panel-body {
+    .caption {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .by {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    .fa-heart {
+      color: $dark-red;
+    }
+  }
+  .panel-footer {
+    background-color: white;
+  }
+} // .user-new
+
+.photos_hongkong, .photos_singapore, .photos_shanghai, .photos_friends, .photos_my {
+  .photos {
+    margin: 0 auto;
+    .box {
+      width: 275px;
+      margin-bottom: 5px;
+      .panel-body {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        .caption {
+          font-size: 12px;
+          font-weight: 400;
+          margin-bottom: 0;
+        }
+        .recent-comments {
+          font-size: 12px;
+          font-weight: 400;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .slide-show {
+    pointer-events: none;
+    a {
+      color: #4A7023;
+    }
+  }
+}
+
+.photos_show {
+  .photo-focus {
+    .photo-previous, .photo-next {
+      display: inline;
+      vertical-align: middle;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  .photo-caption {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    .caption {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .by {
+      font-size: 14px;
+      padding-top: 6px;
+      padding-bottom: 3px;
+    }
+  }
+}
+
+footer {
+  p {
+    text-align: center;
+    padding-top: 10px;
+    span {
+      color: #c81e03;
+    }
+  }
+}
+
+.glyphicon {
+  font-family: FontAwesome !important;
+}
+.glyphicon-chevron-left:before {
+  content:"\f104";
+}
+.glyphicon-chevron-right:before {
+  content: "\f105";
+}

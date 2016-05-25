@@ -1,0 +1,95 @@
+.container
+  .row.text-center.photo-focus
+    .col-md-12
+      .photo-previous
+        = link_to photo_path(@previous_photo) do
+          = icon('chevron-left', class: 'fa-2x')
+      = image_tag @photo.image.url(:single), class: 'img-rounded'
+      .photo-next
+        = link_to photo_path(@next_photo) do
+          = icon('chevron-right', class: 'fa-2x')
+  .row
+    .col-md-6.col-md-offset-3
+      .photo-caption
+        - if @photo.caption
+          .caption = @photo.caption
+        - else
+          - if @photo.user == current_user && logged_in?
+            = link_to edit_photo_path(@photo)
+              => icon('plus')
+              | Add a caption
+        .by
+          ' by
+          = @photo.user.username if @photo.user && @photo.user.username
+          .pull-right
+            - if current_user
+              - if current_user.voted_for?(@photo)
+                => link_to undo_upvote_photo_path(@photo), method: :put do
+                  => icon('heart')
+                  | Unfav
+              - else
+                => link_to upvote_photo_path(@photo), method: :put do
+                  => icon('heart-o')
+                  | Favorite
+        - if @photo.user == current_user && logged_in?
+          = link_to edit_photo_path(@photo) do
+            => icon('pencil')
+            ' Edit
+          ' |
+          = link_to delete_photo_path(@photo), data: { confirm: 'Are you sure?'}, method: :put do
+            => icon('trash-o')
+            ' Delete
+          ' |
+        = link_to "#comment_message" do
+          => icon('comments-o')
+          | Make a new comment
+        .pull-right
+          - if @photo.get_upvotes.any?
+            ' Favorited
+            = pluralize(@photo.get_upvotes.size, 'time')
+
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      .panel.panel-default
+        .panel-heading
+          h1 Comments
+        - if @photo.comments.active.any?
+          .panel-body
+            - @photo.comments.active.each do |comment|
+              .row
+                .col-md-2
+                  - if comment.commenter.image.present?
+                    = image_tag comment.commenter.image.url(:navbar), class: "img-circle"
+                    br
+                  = comment.commenter.username if comment.commenter.username
+                .col-md-8
+                  q => comment.message
+                  - if current_user && comment.commenter == current_user
+                      = link_to edit_photo_comment_path(@photo, comment) do
+                        => icon('pencil')
+                        ' Edit
+                      ' |
+                      = link_to delete_photo_comment_path(@photo, comment), data: { confirm: 'Are you sure?'}, method: :put do
+                        => icon('trash-o')
+                        ' Delete
+                .col-md-2
+                  => time_ago_in_words(comment.updated_at) + " ago"
+              br
+            hr
+        - else
+          .panel-body
+            | No comments yet. Add a new comment below.
+            hr
+
+        .panel-heading
+          h2 New Comment
+        .panel-body
+          = simple_form_for @comment, url: photo_comments_path(@photo), method: :post do |f|
+            = f.error_notification
+
+            .form-inputs
+              = f.input :message
+
+            .form-actions
+              = f.button :submit, "Add Comment", class: "btn-light-blue"

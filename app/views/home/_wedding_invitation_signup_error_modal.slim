@@ -1,0 +1,8 @@
+.modal.fade.wedding-invitation-signup-error-modal role="dialog" aria-labelledby="myLargeModalLabel" tabindex="-1"
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-body style="margin-bottom: 35px;"
+        .alert.alert-danger.alert-dismissable role="alert" style="margin-bottom: 15px;"
+          => icon "exclamation-triangle"
+          = flash[:signing_up_for_invitation_card_error]
+        button.btn.btn-light-blue.pull-right type="button" data-dismiss="modal" Close
