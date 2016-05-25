@@ -1,5 +1,6 @@
 = simple_form_for(@user) do |f|
   = f.error_notification
+  = f.input :location, as: :hidden
 
   .form-inputs
     = f.input :email, required: true, autofocus: true

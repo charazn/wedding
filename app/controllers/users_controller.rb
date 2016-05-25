@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.location = params[:user][:location].to_i
     if @user.save
       auto_login(@user)
       InvitationCardMailer.invitation_card(@user).deliver_now
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :mobile, :username, :password, :password_confirmation, :image)
+    params.require(:user).permit(:email, :mobile, :username, :password, :password_confirmation, :image, :location)
   end
 
 end
